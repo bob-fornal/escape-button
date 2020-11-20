@@ -3,7 +3,7 @@
 
 ## Version
 
-`0.0.1`
+`0.0.2`
 
 ## About
 
@@ -14,6 +14,11 @@ This project is designed to provide safety in the form of an escape button on a 
 `npm install escape-button`
 
 ## Usage
+
+### Demonstration
+
+* Code [HERE](https://github.com/bob-fornal/escape-button-demo)
+* Live [HERE](https://escape-button.web.app/)
 
 ### Using the Files
 
