@@ -3,6 +3,14 @@
   "version": "0.0.1",
   "description": "Domestic Violence Escape Button and Tools.",
   "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/bob-fornal/escape-button/issues",
+    "email": "bob@fornal.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bob-fornal/escape-button"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
