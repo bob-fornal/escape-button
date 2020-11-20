@@ -47,7 +47,7 @@ const images = [
   { file: 'coffee-footer.webp', location: 'https://www.google.com/search?q=coffee&oq=coffee' }
 ];
 
-const escape = new EscapeHandler(images);
+const escape = new EscapeHandler(images, [button text], [exit text]);
 ```
 
 `EscapeHandler` Options:
