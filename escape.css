@@ -1,0 +1,75 @@
+.scramble-me {
+  margin-right: 1em;
+}
+
+.scramble-me button {
+  background: rgb(243, 186, 81);
+  background-image: -webkit-linear-gradient(top, rgb(243, 186, 81), rgb(219, 150, 22));
+  background-image: -moz-linear-gradient(top, rgb(243, 186, 81), rgb(219, 150, 22));
+  background-image: -ms-linear-gradient(top, rgb(243, 186, 81), rgb(219, 150, 22));
+  background-image: -o-linear-gradient(top, rgb(243, 186, 81), rgb(219, 150, 22));
+  background-image: -webkit-gradient(to bottom, rgb(243, 186, 81), rgb(219, 150, 22));
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  padding: 10px 20px;
+  -webkit-box-shadow: 1px 1px 5px 0 #000000;
+  -moz-box-shadow: 1px 1px 5px 0 #000000;
+  box-shadow: 1px 1px 5px 0 #000000;
+  text-shadow: 1px 1px 5px #000000;
+  border: solid rgb(243, 186, 81) 1px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+.scramble-me button:hover {
+  border: solid rgb(243, 186, 81) 1px;
+  background: rgb(219, 150, 22);
+  background-image: -webkit-linear-gradient(top, rgb(219, 150, 22), rgb(243, 186, 81));
+  background-image: -moz-linear-gradient(top, rgb(219, 150, 22), rgb(243, 186, 81));
+  background-image: -ms-linear-gradient(top, rgb(219, 150, 22), rgb(243, 186, 81));
+  background-image: -o-linear-gradient(top, rgb(219, 150, 22), rgb(243, 186, 81));
+  background-image: -webkit-gradient(to bottom, rgb(219, 150, 22), rgb(243, 186, 81));
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.outer-content p:first-of-type {
+  margin-top: 0;
+}
+
+.cover-wrapper {
+  display: none;
+}
+
+.cover-wrapper {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: white;
+  margin: 0;
+  padding: 2em;
+
+  overflow-y: auto;
+}
+
+.cover-wrapper.visible {
+  display: block;
+}
+
+.exit-scramble {
+  color: tan;
+  font-weight: bold;
+}
