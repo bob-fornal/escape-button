@@ -7,13 +7,32 @@
 
 ## About
 
-This project is designed to provide navigation tools to minimize footprint (browser history) and safety in the form of an escape button with a functional page that is non-threatening.
+This project is designed to provide safety in the form of an escape button on a web page with a functional view that is non-threatening.
 
 ## Installation
 
 `npm install escape-button`
 
 ## Usage
+
+### Using the Files
+
+Using a `gulpfile.js`, the `index.js` and `escape.css` can be moved to an appropriate location.
+
+```javascript
+
+const gulp = require('gulp');
+
+gulp.task('escape', function() {
+  sources = [
+    './node_modules/escape-button/index.js',
+    './node_modules/escape-button/escape.css'
+  ];
+  return gulp.src(sources).pipe(gulp.dest('./escape'));
+});
+
+gulp.task('copy-escape', gulp.series('escape'));
+```
 
 ### Images for Escape Button Page
 
@@ -33,9 +52,15 @@ The escape code included should be accompanied by a description similar to the f
 
 Sample code showing usage ...
 
-```javascript
-const EscapeHandler = require('escape-handler');
+For CSS styling, copy the `escape.css` to an appropriate location and use, as follows.
 
+```html
+<link rel="stylesheet" href="styles/escape.css" />
+```
+
+Here's the minimal JavaScript required.
+
+```javascript
 const images = [
   { file: 'google-header.webp', location: 'https://www.google.com/search?q=coffee&oq=coffee' },
   { file: 'coffee-wikipedia.webp', location: 'https://en.wikipedia.org/wiki/Coffee' },
@@ -47,12 +72,13 @@ const images = [
   { file: 'coffee-footer.webp', location: 'https://www.google.com/search?q=coffee&oq=coffee' }
 ];
 
-const escape = new EscapeHandler(images, [button text], [exit text]);
+const escape = new EscapeHandler(images, [anchor fn], [button text], [exit text]);
 ```
 
 `EscapeHandler` Options:
 
-* `images`: (REQUIRED) An array of objects containing `{ file: '...', location: '...' }`
+* `images`: (REQUIRED) An array of objects containing `{ file: '...', location: '...' }`.
+* `anchor function`: (OPTIONAL) Can be used to make the link an `onclick` event.
 * `button text`: (OPTIONAL) Defaults to ESCAPE.
 * `exit text`: (OPTIONAL) Defaults to EXIT.
 
@@ -62,21 +88,21 @@ An ESCAPE button needs to be created on the page.
 <button onclick="escape.trigger()">ESCAPE</button>
 ```
 
-### Hiding Navigation
-
-The navigation code included should be accompanied by a description similar to the following:
-
-> This site was made with your safety in mind. The browser history will only show one link to
-  this site. If a link is followed off this site, there will be nothing in the history to show
-  you were here.
-
-The navigation should be used like this ...
-
-```javascript
-const HideNavigationHandler = require('escape-handler');
-const anchor = new HideNavigationHandler();
-```
+### HTML
 
 ```html
-<a href="#" onclick="anchor.navigate(event, 'index.html')">Home</a>
+<html>
+  <head>
+    <link rel="stylesheet" href="./escape/escape.css" />
+  </head>
+
+  <body style="background-color: skyblue;">
+    <div style="text-align: center">
+      <button onclick="escape.trigger()">ESCAPE</button>
+    </div>
+
+    <script src="./escape/index.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
 ```

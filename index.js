@@ -1,12 +1,10 @@
 
 class EscapeHandler {
-  constructor (images = [], btnText = 'ESCAPE', exitText = 'EXIT') {
-    this.btnElement = btnElement;
+  constructor (images = [], anchorFn = null, btnText = 'ESCAPE', exitText = 'EXIT') {
     this.images = images;
+    this.anchorFn = anchorFn;
     this.btnText = btnText;
     this.exitText = exitText;
-
-    this.images = [];
 
     this.cover = document.createElement('div');
     this.cover.classList.add('cover-wrapper');
@@ -20,11 +18,11 @@ class EscapeHandler {
     this.appendAllImages();
     this.appendExit();
 
-    this.cover.appendChild(inner);
+    this.cover.appendChild(this.inner);
   }
 
   trigger() {
-    const state = [...this.cover.classlist].includes('visible');
+    const state = [...this.cover.classList].includes('visible');
 
     if (state === true) {
       this.cover.classList.remove('visible');
@@ -40,40 +38,30 @@ class EscapeHandler {
   }
 
   appendImage(image) {
-      const imgWrapper = document.createElement('div');
-      const imageLocation = `images/scramble/${ image.file }`;
+    const imgWrapper = document.createElement('div');
 
-      const anchor = document.createElement('a');
+    const anchor = document.createElement('a');
+    if (this.anchorFn === null) {
+      anchor.setAttribute('href', image.location);
+    } else {
       anchor.setAttribute('href', '#');
-      anchor.setAttribute('onclick', `anchor.navigate(event, '${ image.location }')`);
+      anchor.setAttribute('onclick', this.anchorFn(image));
+    }
+  
+    const img = document.createElement('img');
+    img.setAttribute('src', image.file);
+  
+    anchor.appendChild(img);
+    imgWrapper.appendChild(anchor);
     
-      const img = document.createElement('img');
-      img.setAttribute('src', imageLocation);
-    
-      anchor.appendChild(img);
-      imgWrapper.appendChild(anchor);
-      
-      this.inner.appendChild(imgWrapper);
+    this.inner.appendChild(imgWrapper);
   }
 
   appendExit() {
     const exit = document.createElement('div');
     exit.classList.add('exit-scramble');
     exit.innerText = this.exitText;
-    exit.onclick = scramble.trigger;
-    inner.appendChild(exit);
+    exit.onclick = this.trigger.bind(this);
+    this.inner.appendChild(exit);
   }
 }
-
-class HideNavigationHandler {
-  constructor() {}
-
-  navigate(event, location) {
-    event.preventDefault();
-    window.location.replace(location);
-    return false;
-  };
-}
-
-module.exports = EscapeHandler;
-module.exports = HideNavigationHandler;
